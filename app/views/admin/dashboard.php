@@ -1,0 +1,454 @@
+<body?php //session_start(); // Pastikan session dimulai if (!isset($_SESSION['user_id'])) {
+  header('Location: ' . BASEURL);
+    exit;
+}
+?>
+
+<style>
+  .main-header {
+    position: relative; 
+    z-index: 1;
+}
+
+.container {
+  padding-top: relative; 
+}
+</style>
+<body>
+    <div class="wrapper">
+       <!-- Sidebar -->
+       <div class="sidebar" data-background-color="dark">
+            <div class="sidebar-logo">
+                <!-- Logo Header -->
+                <div class="logo-header" data-background-color="dark">
+                    <a href="dashboard.php" class="logo">
+                        <img src="<?= BASEURL; ?>/images/logo-2.svg" alt="navbar brand" class="navbar-brand" height="20" />
+                    </a>
+                    <div class="nav-toggle">
+                        <button class="btn btn-toggle toggle-sidebar">
+                            <i class="gg-menu-right"></i>
+                        </button>
+                        <button class="btn btn-toggle sidenav-toggler">
+                            <i class="gg-menu-left"></i>
+                        </button>
+                    </div>
+                    <button class="topbar-toggler more">
+                        <i class="gg-more-vertical-alt"></i>
+                    </button>
+                </div>
+                <!-- End Logo Header -->
+            </div>
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                <div class="sidebar-content">
+                    <ul class="nav nav-secondary">
+                        <li class="nav-item active">
+                            <a href="<?= BASEURL; ?>/admin/dashboard">
+                                <i class="fas fa-home"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= BASEURL; ?>/admin/datasiswa">
+                                <i class="fas fa-user-graduate"></i>
+                                <p>Data Siswa</p>  
+                            </a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a href="<?= BASEURL; ?>/admin/dataguru">
+                                <i class="fas fa-users"></i> 
+                                <p>Data Guru</p> 
+                            </a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a href="<?= BASEURL; ?>/admin/databerita">
+                                <i class="fas fa-newspaper"></i>
+                                <p>Berita</p> 
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="<?= BASEURL; ?>/admin/datafasilitas">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                <p>Fasilitas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= BASEURL; ?>/admin/dataperpustakaan">
+                            <i class="fas fa-book"></i>
+                            <p>Perpustakaan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-item-logout">
+                            <a href="<?= BASEURL; ?>/login/logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Logout</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Sidebar -->
+      <!-- End Sidebar -->
+<?php extract($data) ?>
+      <div class="main-panel">
+        <!-- add new component in here -->
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+            <a href="<?= BASEURL; ?>/dashboard" class="logo">
+              <img src="../images/logo-2.svg" alt="navbar brand" class="navbar-brand" height="20">
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+            <div class="container-fluid">
+              <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+              
+              </nav>
+            </div>
+          </nav>
+          <!-- End Navbar -->
+        </div>
+        <!-- end of this component -->
+        
+        <class="container">
+          <div class="page-inner">
+            <div
+              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
+            >
+              <div>
+                <h3 class="fw-bold mb-3">Dashboard</h3>
+                <h6 class="op-7 mb-2">Lihat sekilas statistik penting dan notifikasi terbaru</h6>
+              </div>
+              <div class="ms-md-auto py-2 py-md-0">
+                <a class="btn btn-primary btn-round" href="#" data-bs-toggle="modal" data-bs-target="#addUser">Tambahkan User</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-primary bubble-shadow-small"
+                        >
+                          <i class="fas fa-users"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <!-- configurasi total guru -->
+                          <p class="card-category">Guru</p>
+                          <h4 class="card-title"><?= $totalGuru; ?></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-primary bubble-shadow-small"
+                        >
+                          <i class="fas fa-building"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <!-- configurasi total fasilitas-->
+                          <p class="card-category">Fasilitas</p>
+                          <h4 class="card-title"><?= $totalFasilitas; ?></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-primary bubble-shadow-small"
+                        >
+                          <i class="fas fa-book"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <!-- configurasi total ebook-->
+                          <p class="card-category">E-Book</p>
+                          <h4 class="card-title"><?= $totalBooks; ?></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-info bubble-shadow-small"
+                        >
+                          <i class="fas fa-user-graduate"></i> 
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <!-- configurasi total siswa -->
+                          <p class="card-category">Siswa</p>
+                          <h4 class="card-title"><?= $totalSiswa ?></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-success bubble-shadow-small"
+                        >
+                          <i class="fas fa-user"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <!-- configurasi jumlah user - staff admin -->
+                          <p class="card-category">User</p>
+                          <h4 class="card-title"><?= $totalUsers; ?></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-secondary bubble-shadow-small"
+                        >
+                          <i class="far fa-newspaper"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <!-- configurasi total berita telah di posting -->
+                          <p class="card-category">Berita</p>
+                          <h4 class="card-title"><?= $totalBerita; ?></h4> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- tabel data user -->
+            <div class="col-md-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                        <div class="row"><div class="col-sm-12 col-md-6">
+                          <div class="dataTables_length" id="add-row_length">
+                            <!-- <label>Tampilkan 
+                              <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
+                                <option value="10">10
+                                </option>
+                              </select>
+                            </label> -->
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                        <div id="add-row_filter" class="dataTables_filter">
+                          <div class="dataTables_filter">
+                            <label>Cari 
+                              <input type="search" id="searchInput" class="form-control form-control-sm" placeholder="" aria-controls="add-row">
+                            </label>
+                            <button type="button" id="searchButton" class="btn btn-primary">Cari</button>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <table id="add-row" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="add-row_info">
+                        <thead>
+                          <!-- header tabel data user -->
+                          <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 204.992px;">
+                              Nama User
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 301.883px;">
+                              Username
+                            </th>
+                  
+                            <th style="width: 120.688px;" class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">
+                              Action</th></tr>
+                        </thead>
+                        <!-- content tabel -->
+                        <tbody>
+                          <?php foreach ($data['users'] as $user): ?>
+                            <tr role="row" class="odd">
+                                <!-- nama user -->
+                                <td class="sorting_1">
+                                  <?= $user['nama_user']; ?>
+                                </td>
+                                <!-- username user -->
+                                <td>
+                                  <?= $user['username']; ?>
+                                  <!-- musliminaja -->
+                                </td>
+                                <!-- password user -->
+
+                                <td>
+                                  <div class="form-button-action">
+                                    <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                      <i class="fa fa-times">
+                                      <a href="<?= BASEURL ?>/admin/hapusUser/<?= $user['id_user'] ?>" onclick="return confirm(' Yakin mau menghapus data ini?');">Hapus</a>
+    </i>
+    </button>
+    </div>
+    </td>
+    </tr>
+  <?php endforeach; ?>
+  </tbody>
+  </table>
+  </div>
+  </div>
+  <!-- paginate -->
+  <div class="row">
+    <div class="col-sm-12 col-md-5">
+      <div class="dataTables_info" id="add-row_info" role="status" aria-live="polite">
+        Menampilkan halaman <?= $data['currentPage'] ?> dari <?= $data['totalPages'] ?>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-7">
+      <div class="dataTables_paginate paging_simple_numbers" id="add-row_paginate">
+        <ul class="pagination">
+          <?php if ($data['currentPage'] > 1): ?>
+            <li class="paginate_button page-item previous" id="add-row_previous">
+              <a href="<?= BASEURL ?>/admin/dashboard/<?= $data['currentPage'] - 1 ?>" aria-controls="add-row"
+                data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+            </li>
+          <?php endif; ?>
+          <?php for ($i = 1; $i <= $data['totalPages']; $i++): ?>
+            <li class="paginate_button page-item <?= $i == $data['currentPage'] ? 'active' : '' ?>">
+              <a href="<?= BASEURL ?>/admin/dashboard/<?= $i ?>" aria-controls="add-row" data-dt-idx="<?= $i ?>"
+                tabindex="0" class="page-link"><?= $i ?></a>
+            </li>
+          <?php endfor; ?>
+          <?php if ($data['currentPage'] < $data['totalPages']): ?>
+            <li class="paginate_button page-item next" id="add-row_next">
+              <a href="<?= BASEURL ?>/admin/dashboard/<?= $data['currentPage'] + 1 ?>" aria-controls="add-row"
+                data-dt-idx="3" tabindex="0" class="page-link">Next</a>
+            </li>
+          <?php endif; ?>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- end paginate -->
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- Modal Pop Up -->
+  <!-- configurasi untuk menambahkan user -->
+  <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content rounded-0 border-0 p-4">
+        <div class="modal-header border-0">
+          <h3>Tambahkan User</h3>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="<?= BASEURL; ?>/admin/tambahUser" class="row" method="POST">
+            <div class="col-12">
+              <label for="namauser" class="col-form-label">Nama User</label>
+              <input type="text" class="form-control mb-3" id="namauser" name="namauser" placeholder="cth. Muslimin"
+                required>
+            </div>
+            <div class="col-12">
+              <label for="username" class="col-form-label">Username</label>
+              <input type="text" class="form-control mb-3" id="username" name="username" placeholder="cth. muslim982"
+                required>
+            </div>
+            <div class="col-12">
+              <label for="password" class="col-form-label">Password</label>
+              <div class="input-group mb-3">
+                <input type="password" class="form-control" id="password" name="password"
+                  placeholder="Masukkan password" required>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Tambahkan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('searchButton').addEventListener('click', function () {
+      var query = document.getElementById('searchInput').value;
+      if (query) {
+        window.location.href = '<?= BASEURL ?>/admin/dashboard/search/' + encodeURIComponent(query);
+      }
+    });
+
+    document.getElementById('togglePassword').addEventListener('click', function () {
+      const passwordField = document.getElementById('password');
+      const passwordFieldType = passwordField.getAttribute('type');
+
+      if (passwordFieldType === 'password') {
+        passwordField.setAttribute('type', 'text');
+        this.innerHTML = '<i class="fa fa-eye-slash"></i>';
+      } else {
+        passwordField.setAttribute('type', 'password');
+        this.innerHTML = '<i class="fa fa-eye"></i>';
+      }
+    });
+  </script>
+
+  </body>
